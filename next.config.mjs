@@ -1,13 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     trailingSlash: true,
-    basePath: '/myweb-v2',
-    exportPathMap: async function (defaultPathMap) {
-        return {
-            '/': { page: '/' },
-            // Add additional paths here
-        };
-    },
+    basePath: '/myweb-v2', // replace with your actual repo name
 };
 
 export default nextConfig;
