@@ -1,7 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-    trailingSlash: true,
-    basePath: '/myweb-v2', // replace with your actual repo name
-};
+const nextConfig = {};
 
 export default nextConfig;
