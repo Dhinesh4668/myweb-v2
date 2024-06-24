@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and Export Next.js application
+      - name: Build Next.js application
+        run: npm run build
+
+      - name: Export Next.js application
         run: npm run export
 
       - name: Deploy to GitHub Pages
