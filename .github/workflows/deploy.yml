@@ -24,9 +24,6 @@ jobs:
     - name: Build Next.js application
       run: npm run build
 
-    - name: Export Next.js application
-      run: npm run export
-
 #    - name: Deploy to GCP
 #      env:
 #        GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
