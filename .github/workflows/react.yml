@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master # adjust to your main branch name
+  pull_request:
+    branches:
+      - master # adjust to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
