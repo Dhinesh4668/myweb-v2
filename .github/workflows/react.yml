@@ -18,6 +18,3 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-
-      - name: dev
-        run: yarn run dev
