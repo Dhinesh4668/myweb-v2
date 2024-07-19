@@ -1,9 +1,9 @@
 export const colors = {
-    background: "#ffffff", // Correct six-character hex value
-    primary: "#999999",    // Correct six-character hex value
-    secondary: "#555555",  // Correct six-character hex value
-    tertiary: "#222222",   // Fixed the typo from "thersdry" to "tertiary"
-    black: "#000000"       // Correct six-character hex value
+    background: "#EFF1EF", // Correct six-character hex value
+    primary: "#1D3BE2",    // Correct six-character hex value
+    black: "#000000",       // Correct six-character hex value
+    green: "#00B302",
+    gradent: "#5780FC #5780FC #CE8CE3 #E1D3E2"
 };
 
 export const size = {

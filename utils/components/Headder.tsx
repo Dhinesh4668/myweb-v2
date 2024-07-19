@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderContainer, Logo, Button, HeaderLink, LinkContainer } from './HeadderStyles';
-
+import Bash from '../components/asstet/bash-icon.svg'
 const Header = (): React.FC => {
     const linkData = [
         {
@@ -23,7 +23,7 @@ const Header = (): React.FC => {
 
     return (
         <HeaderContainer>
-            <Logo src="/path/to/logo.png" alt="Logo" />
+            <Logo src={Bash} alt="Logo" />
             <LinkContainer>
                 {linkData.map((data, index) => (
                     <HeaderLink
@@ -34,7 +34,7 @@ const Header = (): React.FC => {
                     </HeaderLink>
                 ))}
             </LinkContainer>
-            <Button onClick={() => alert("Sample")}>let's talk 👋</Button>
+            {/* <Button onClick={() => alert("Sample")}>let's talk 👋</Button> */}
         </HeaderContainer>
     );
 };

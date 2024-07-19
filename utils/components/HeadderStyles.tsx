@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { size } from '../theme'
 export const HeaderContainer = styled.header`
@@ -11,10 +11,26 @@ export const HeaderContainer = styled.header`
     }
 `;
 
+const shake = keyframes`
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2%); }
+    50% { transform: translateX(2%); }
+    75% { transform: translateX(-2%); }
+    100% { transform: translateX(0); }
+`;
+
 export const Logo = styled.img`
     height: 50px;
     width: auto;
+    transition: box-shadow 0.3s ease-in-out, border-radius 0.3s ease-in-out; // Smooth transition for glow and border-radius
+    border-radius: 200px; // Initial border-radius
+    background-color: transparent; // Ensure background is transparent
+    cursor: pointer;
+    &:hover {
+        animation: ${shake} 0.5s ease-in-out; // Apply shake animation on hover
+    }
 `;
+
 
 export const LinkContainer = styled.nav`
     display: flex;
@@ -26,17 +42,13 @@ export const LinkContainer = styled.nav`
     }
 `;
 
+
 export const HeaderLink = styled(Link)`
     text-decoration: none;
-    /* color: ; */
     margin: 0 1rem;
     position: relative;
     overflow: hidden;
     font-size: ${size.medium};
-
-    &:hover::after {
-        transform: translateX(0);
-    }
 
     &::after {
         content: '';
@@ -50,26 +62,11 @@ export const HeaderLink = styled(Link)`
         transition: transform 0.3s ease-in-out;
     }
 
+    &:hover::after {
+        transform: translateX(0);
+    }
+
     @media (max-width: 768px) {
         margin: 0.5rem;
     }
 `;
-
-export const Button = styled.button`
-    display: flex;
-    background-color: #0dff00;
-    font-size: ${size.large};
-    padding:0.8rem  2rem;
-    border-radius: 10rem;
-    cursor: pointer;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    &:hover {
-        /* background-color: #0056b3; */
-        border-radius: 5px;
-        /* transform: translateX(0); */
-    }
-`;
-
