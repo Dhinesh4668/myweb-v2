@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Headder, Fotter } from '../../utils/components';
+import { Headder, Fotter } from '../Components';
 import Loader from '../assets/icons/loadder.svg';
 
 const HomeMainPage = React.lazy(() => import('../pages/HomePage/HomeMainPage'));
+const BlogsPage = React.lazy(() => import('../pages/BlogsPage/BlogsPage'))
 const PageNotFound = React.lazy(() => import('../pages/404/PageNotFound'));
 
 const AppRoutes = () => {
@@ -37,6 +38,7 @@ const AppRoutes = () => {
             }>
                 <Routes>
                     <Route path="/" element={<HomeMainPage />} />
+                    <Route path='/blog' element={<BlogsPage />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </React.Suspense>

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import {
     HomeContainerWrap,
     HomeTitle,
@@ -8,15 +8,20 @@ import {
     Highlight,
     InnerContainer,
     ScrollContainer
-} from './HomeStyles'; // Adjust the import path as needed
-import { Button } from '../../../utils/components';
+} from './HomeStyles';
+import { Button } from '../../Components';
 import HomePage from '../../assets/vector/homw-1.svg';
 import location from '../../assets/icons/location.svg';
 import styled, { keyframes } from 'styled-components';
+import { useEffect, useState } from "react";
+import supabase from "../../../supabase.ts";
+import { Linkedin, Insta, Mail, Redit } from '../../assets/social/index.ts';
+import AboutusPage from '../Aboutus/AboutusPage.tsx';
 
 interface HomeDataItem {
     skill: string;
 }
+
 
 const homeData: HomeDataItem[] = [
     { skill: "React" },
@@ -32,6 +37,17 @@ const homeData: HomeDataItem[] = [
     { skill: "JavaScript" },
     { skill: "MongoDB" }
 ];
+
+const socilal = [
+    {
+        name: "LinkeDin",
+        icon: Linkedin
+    },
+    {
+        name: "Insta",
+        icon: Insta
+    }
+]
 
 // Define the floating animation
 const float = keyframes`
@@ -59,8 +75,8 @@ const marquee = keyframes`
 // Styled component for the floating icon
 const FloatingIcon = styled.div`
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 300px;
+    left: 650px;
     animation: ${float} 4s ease-in-out infinite;
     display: flex;
     flex-direction: column;
@@ -92,6 +108,34 @@ const MarqueeText = styled.div`
 `;
 
 const HomeMainPage = () => {
+    const [ProfileData, setProfileData] = useState<{ des?: string; name?: string }>({})
+    useEffect(() => {
+        const fetchHomeData = async () => {
+            const { data: homeData, error } = await supabase
+                .from('homeData')
+                .select('*');
+            if (error) {
+                console.log("error while fetching the data", error)
+            } else {
+                setProfileData(homeData[0])
+                // console.log(ProfileData)
+            }
+        }
+
+        // download resume
+
+
+        fetchHomeData();
+    }, []);
+    const getFile = async () => {
+        const { data, error } = await supabase.storage.from("resume").download("resume/bg.svg");
+        if (error) {
+            console.error("Error downloading file: ", error.message);
+            return;
+        }
+        console.log(data)
+
+    }
     return (
         <HomeContainerWrap>
             {/* Floating icons */}
@@ -106,13 +150,15 @@ const HomeMainPage = () => {
             <InnerContainer>
                 <Left>
                     <HomeTitle>
-                        <Highlight>I develop full-stack mobile & web applications</Highlight> that not only perform seamlessly but also captivate and inspire users.
+                        {/*<Highlight>I develop full-stack mobile & web applications</Highlight> that not only perform seamlessly but also captivate and inspire users.*/}
+                        {ProfileData.des}
                     </HomeTitle>
                     <SubText>
-                        I am 'DhineshKumar', a developer from INDIA. I create user-friendly User Interfaces and applications for fast-growing startups.
+                        {/*I am 'DhineshKumar', a developer from INDIA. I create user-friendly User Interfaces and applications for fast-growing startups.*/}
+                        {ProfileData.name}
                     </SubText>
                     {/* Self description */}
-                    <Button title={"Book a call"} onClick={() => alert("Book a call")} />
+                    <Button title={"Book a call"} onClick={getFile} />
                 </Left>
 
                 {/* Right */}
@@ -121,6 +167,17 @@ const HomeMainPage = () => {
                 </Right>
             </InnerContainer>
             {/* Scrolling skills */}
+            <div
+                style={{
+                    margin: "0rem 10rem",
+                    marginTop: "-6rem"
+                }}
+            >
+
+                {/* {socilal.map((data, index) => (
+                    <img src={data.icon} height={50} width={50} alt={data.name} />
+                ))} */}
+            </div>
             <ScrollContainer>
                 <MarqueeText>
                     {homeData.map((data, index) => (
@@ -128,6 +185,7 @@ const HomeMainPage = () => {
                     ))}
                 </MarqueeText>
             </ScrollContainer>
+            <AboutusPage />
         </HomeContainerWrap>
     );
 };

@@ -1,8 +1,10 @@
-import React from 'react'
+import MarkdownEditor from "./helper/MarkdownEditor"
 
 const BlogsPage = () => {
     return (
-        <div>BlogsPage</div>
+        <div>
+            <MarkdownEditor />
+        </div>
     )
 }
 

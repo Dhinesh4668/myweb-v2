@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import { size } from '../theme'
+import { size } from '../../utils/theme/index'
 export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-evenly;

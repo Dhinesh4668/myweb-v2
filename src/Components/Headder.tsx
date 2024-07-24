@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderContainer, Logo, Button, HeaderLink, LinkContainer } from './HeadderStyles';
-import Bash from '../components/asstet/bash-icon.svg'
+import Bash from '../Components/asstet/bash-icon.svg'
 const Header = (): React.FC => {
     const linkData = [
         {
