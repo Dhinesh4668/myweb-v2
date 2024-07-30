@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Headder, Fotter } from '../Components';
+import Header from '../Components/Headder';
+import { Fotter } from '../Components';
 import Loader from '../assets/icons/loadder.svg';
 
 const HomeMainPage = React.lazy(() => import('../pages/HomePage/HomeMainPage'));
-const BlogsPage = React.lazy(() => import('../pages/BlogsPage/BlogsPage'))
+const BlogsPage = React.lazy(() => import('../pages/BlogsPage/BlogsPage'));
 const PageNotFound = React.lazy(() => import('../pages/404/PageNotFound'));
 
 const AppRoutes = () => {
@@ -13,15 +14,14 @@ const AppRoutes = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowFallback(true);
-        }, 6000); // 2 seconds delay
+        }, 6000); // 6 seconds delay
 
-        // Clear timer on component unmount
         return () => clearTimeout(timer);
     }, []);
 
     return (
         <Router>
-            <Headder />
+            <Header />
             <React.Suspense fallback={
                 showFallback ? (
                     <div style={{

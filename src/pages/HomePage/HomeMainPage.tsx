@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import supabase from "../../../supabase.ts";
 import { Linkedin, Insta, Mail, Redit } from '../../assets/social/index.ts';
 import AboutusPage from '../Aboutus/AboutusPage.tsx';
+import Card from '../../Components/SkillsCard/Card.tsx';
 
 interface HomeDataItem {
     skill: string;
@@ -107,6 +108,19 @@ const MarqueeText = styled.div`
     }
 `;
 
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+  }
+`;
+
 const HomeMainPage = () => {
     const [ProfileData, setProfileData] = useState<{ des?: string; name?: string }>({})
     useEffect(() => {
@@ -178,14 +192,25 @@ const HomeMainPage = () => {
                     <img src={data.icon} height={50} width={50} alt={data.name} />
                 ))} */}
             </div>
-            {/* <ScrollContainer>
+            <ScrollContainer>
                 <MarqueeText>
                     {homeData.map((data, index) => (
                         <p key={index} style={{ display: "inline-block", margin: "0 20px" }}> - {data.skill}</p>
                     ))}
                 </MarqueeText>
-            </ScrollContainer> */}
+            </ScrollContainer>
+            <h1>about us , <span style={{
+                color: "blue"
+            }}>.</span></h1>
             <AboutusPage />
+            {/* exprence */}
+            <h1>experance</h1>
+            <CardContainer>
+
+                <Card title={"developer "} description={"working as a fullstack developer "} link={"link"} />
+                <Card title={"developer "} description={"working as a fullstack developer "} link={"link"} />
+                <Card title={"developer "} description={"working as a fullstack developer "} link={"link"} />
+            </CardContainer>
         </HomeContainerWrap>
     );
 };

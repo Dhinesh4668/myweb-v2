@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     padding: 0px;
     background-color: gba(255,255,255,0.5);
+    /* background-color: #e8e8e8; */
       font-family: "IBM Plex Sans", sans-serif;
       /* font-family: "Lora", serif; */
   }
