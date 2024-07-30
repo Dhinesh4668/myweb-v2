@@ -178,13 +178,13 @@ const HomeMainPage = () => {
                     <img src={data.icon} height={50} width={50} alt={data.name} />
                 ))} */}
             </div>
-            <ScrollContainer>
+            {/* <ScrollContainer>
                 <MarqueeText>
                     {homeData.map((data, index) => (
                         <p key={index} style={{ display: "inline-block", margin: "0 20px" }}> - {data.skill}</p>
                     ))}
                 </MarqueeText>
-            </ScrollContainer>
+            </ScrollContainer> */}
             <AboutusPage />
         </HomeContainerWrap>
     );

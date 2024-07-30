@@ -1,5 +1,5 @@
 import React from 'react'
-import { DoubleQuts, InnerContainer, Left, Name, ParentDiv, Right } from './About_style'
+import { DoubleQuts, InnerContainer, Name, ParentDiv, Right } from './About_style'
 import { Button } from '../../Components'
 
 
@@ -15,7 +15,7 @@ const AboutusPage = () => {
 
             {/* inner container */}
             <InnerContainer>
-                <Left>image</Left>
+
                 <Right>
                     <DoubleQuts />
                     <p>
@@ -23,9 +23,7 @@ const AboutusPage = () => {
                         <span>{About.position}</span><br /><br />
                         {About.content}
                     </p>
-
                 </Right>
-
             </InnerContainer>
 
         </ParentDiv>
