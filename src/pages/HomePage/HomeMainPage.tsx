@@ -172,7 +172,7 @@ const HomeMainPage = () => {
                         {ProfileData.name}
                     </SubText>
                     {/* Self description */}
-                    <Button title={"Book a call"} onClick={getFile} />
+                    <Button title={"Book a call"}  link={"https://calendly.com/dhinesh4668/30min?preview_source=et_card&month=2024-07"}/>
                 </Left>
 
                 {/* Right */}
