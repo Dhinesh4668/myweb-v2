@@ -1,0 +1,95 @@
+name: Auto Issue Tracking and Management
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: # Allows manual triggering of the workflow
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Step to run tests or build (modify the command according to your project)
+      - name: Run Tests
+        run: yarn test
+        continue-on-error: true
+
+      # Step to create a new issue if tests fail
+      - name: Create Issue on Failure
+        if: failure() # Only runs this step if the tests fail
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issueTitle = `Build Failure - ${new Date().toLocaleDateString()}`;
+            const issueBody = `A build failed in the latest push to the \`${context.ref}\` branch. Check the workflow logs for more details.`;
+            
+            // Check if an open issue with the 'build-failure' label exists
+            const existingIssues = await github.issues.listForRepo({
+              owner,
+              repo,
+              labels: 'build-failure',
+              state: 'open'
+            });
+
+            if (existingIssues.data.length === 0) {
+              // Create a new issue if no such issue exists
+              await github.issues.create({
+                owner,
+                repo,
+                title: issueTitle,
+                body: issueBody,
+                labels: ['build-failure'],
+                assignees: ['username1', 'username2'] # Replace with actual GitHub usernames
+              });
+            } else {
+              // Add a comment to the existing issue if one already exists
+              const issueNumber = existingIssues.data[0].number;
+              await github.issues.createComment({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                body: `Another build failed on \`${context.ref}\`. Please check the logs.`
+              });
+            }
+
+      # Step to close the issue when the build passes
+      - name: Close Issue on Success
+        if: success() # Only runs this step if the build passes
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            
+            // Fetch all open issues with the 'build-failure' label
+            const openIssues = await github.issues.listForRepo({
+              owner,
+              repo,
+              labels: 'build-failure',
+              state: 'open'
+            });
+
+            for (const issue of openIssues.data) {
+              // Close each issue
+              await github.issues.update({
+                owner,
+                repo,
+                issue_number: issue.number,
+                state: 'closed'
+              });
+
+              // Add a comment indicating that the issue is resolved
+              await github.issues.createComment({
+                owner,
+                repo,
+                issue_number: issue.number,
+                body: 'The build is now passing. This issue is resolved and will be closed.'
+              });
+            }
