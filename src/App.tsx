@@ -1,10 +1,9 @@
 import React from 'react'
-import AppRoutes from './routers/AppRouters'
 
 const App = () => {
   return (
     <React.Fragment>
-      <AppRoutes />
+      <dev>home</dev>
     </React.Fragment>
   )
 }

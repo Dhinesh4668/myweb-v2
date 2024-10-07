@@ -12,3 +12,6 @@ export const size = {
     large: "24px",
     extraLarge: "32px"
 };
+
+
+export const fontFamily = {}
