@@ -1,7 +1,16 @@
 {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "printWidth": 80
-  }
-  
+  "semi": false, // Disable semicolons at the end of statements
+  "singleQuote": true, // Use single quotes instead of double quotes
+  "trailingComma": "es5", // Add trailing commas where valid in ES5 (objects, arrays, etc.)
+  "printWidth": 80, // Set the maximum line length to 80 characters
+  "tabWidth": 2, // Set the number of spaces per indentation level
+  "useTabs": false, // Use spaces for indentation instead of tabs
+  "bracketSpacing": true, // Print spaces between brackets in object literals
+  "arrowParens": "always", // Always include parentheses around arrow function arguments
+  "jsxSingleQuote": false, // Use double quotes in JSX (e.g., <div className="example">)
+  "endOfLine": "lf", // Enforce Unix-style line endings (LF)
+  "quoteProps": "as-needed", // Only add quotes around object properties when necessary
+  "proseWrap": "preserve", // Don’t wrap markdown text in long lines
+  "htmlWhitespaceSensitivity": "css", // Respect the default CSS display value for whitespace
+  "jsxBracketSameLine": false // Put the closing `>` of JSX elements on a new line
+}

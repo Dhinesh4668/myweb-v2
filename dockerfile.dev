@@ -1,0 +1,20 @@
+# Development Stage
+FROM node:18 AS dev
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the package.json and yarn.lock files
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Expose port 3000 for Vite development server
+EXPOSE 3000
+
+# Run the development server
+CMD ["npm", "dev", "--host"]
