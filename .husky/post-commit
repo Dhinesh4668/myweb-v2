@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Post-commit actions (e.g., logging or running additional scripts)
+echo "Commit successfully created!"
