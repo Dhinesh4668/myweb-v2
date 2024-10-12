@@ -1,24 +1,42 @@
 /**
- * @Dhinesh4668
- * @author  Dhinesh
- * **/
+ * Home Component
+ *
+ * This component displays the hero profile data (title and subtitle) from a JSON file.
+ * It uses styled components for layout and text formatting.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Home />
+ * )
+ *
+ * @returns {JSX.Element} The Home component displaying hero title and subtitle.
+ * @author Dhinesh
+ */
+
 
 import React from 'react'
-import heroProfile from "../../../utils/data/heroData.json"
-import { Button } from '@mdxeditor/editor'
+import heroProfile from '../../../utils/data/heroData.json'
+import Arrow from '../../assets/icons/growIcon.svg'
+import { ArrowIcon, Button, CenterContainer, HomeContainer, PrimaryText, Round, SubTitle } from './HomeStyle.tsx'
 
+const Home: React.FC = () => {
 
+  return (
+    <HomeContainer>
+      <CenterContainer>
+        <PrimaryText>{heroProfile?.title}
+          <ArrowIcon src={Arrow} />
+        </PrimaryText>
+        <SubTitle>{heroProfile?.subtitle}</SubTitle>
+      </CenterContainer>
 
-const Home = () => {
-
-    return (
-        <>
-            <p>{heroProfile.title}</p>
-            <p>{heroProfile.subtitle
-            }</p>
-            <Button title='fkjhfkj'/>
-        </>
-    )
+      {/*  button*/}
+      <Button to="/">contact
+        <Round />
+      </Button>
+    </HomeContainer>
+  )
 }
 
 export default Home
