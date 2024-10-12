@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logoimage from '../../public/sample.svg';
+import { Link } from 'react-router-dom';
+import { colors } from '../styles/colors.json'
 
 // Styled components
 const CenteredContainer = styled.div`
@@ -18,6 +20,7 @@ const HeaderContainer = styled.header`
   margin: 20px;
   width: fit-content;
   align-items: center;
+  align-content: center;
 
 `;
 
@@ -26,16 +29,23 @@ const Logo = styled.div`
   align-items: center;
   font-size: 20px;
   font-weight: 500;
-  color: #fff;
+  color: ${colors.text.primary};
   margin-right: 10px;
+  font-family: 'DXGliter', sans-serif;
   img {
     margin-right: 10px;
   }
+  padding-right: 10px;
 `;
+
+const HeaderLogo = styled.img`
+  height: 20px;
+  width: 20px;
+`
 
 const NavLinks = styled.nav`
   display: flex;
-  gap: 10px; /* Set gap between links to 10px */
+  gap: 10px; 
 
   a {
     color: #fff;
@@ -48,18 +58,26 @@ const NavLinks = styled.nav`
   }
 `;
 
+
+
+
+
 const Header: React.FC = () => {
   return (
     <CenteredContainer>
       <HeaderContainer>
-        <Logo>
-          <img src={Logoimage} alt="Logo" width="25" height="25" />
-          Dhinesh
-        </Logo>
+        <Link style={{
+          textDecoration: "none"
+        }} to={"/"}>
+          <Logo>
+            <HeaderLogo src={Logoimage} alt="Logo" />
+            {''}Dhinesh{''}
+          </Logo>
+
+        </Link>
         <NavLinks>
           <a href="#whyus">Why us</a>
           <a href="#about">About us</a>
-          <a href="#portfolio">Portfolio</a>
           <a href="#vlog">Blog</a>
         </NavLinks>
         {/* <ContactButton type="primary">

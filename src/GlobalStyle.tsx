@@ -1,23 +1,28 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+  /* Google Font Imports */
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300..700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400..700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400..700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+  /* Custom Font - DXGliter */
+  @font-face {
+    font-family: 'DXGliter';
+    src: url('./assets/fonts/DxGlitar-free-font.ttf') format('truetype'); /* Use correct font format */
+    font-weight: normal;
+    font-style: normal;
+  }
 
-  /* title fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap'); // font-family: "Cabin", sans-serif;
-  /* body font */
-  @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&display=swap'); //font-family: "Outfit", sans-serif;
-
+  /* Global Styling */
   * {
       box-sizing: border-box;
-
-    font-family: "Cabin", sans-serif;
       margin: 0;
       padding: 0;
+      font-family: 'Cabin', sans-serif; /* Default body font */
   }
 
   body {
@@ -25,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
       color: #E0E0E0; /* Light text color */
       line-height: 1.6;
       overflow-y: scroll; /* Enable scrolling */
-      font-family: "Cabin", sans-serif;
+      font-family: 'Cabin', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -41,9 +46,6 @@ const GlobalStyle = createGlobalStyle`
   a {
       color: #BB86FC; /* Link color */
       text-decoration: none;
-      &:hover {
-          text-decoration: underline;
-      }
   }
 
   input, textarea, select {
@@ -71,6 +73,7 @@ const GlobalStyle = createGlobalStyle`
       }
   }
 
+  /* Hide scrollbar */
   *::-webkit-scrollbar {
     display: none; 
   }
