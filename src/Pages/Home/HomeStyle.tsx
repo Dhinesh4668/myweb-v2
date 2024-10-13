@@ -141,7 +141,31 @@ const Round = styled.div`
     border-radius: 25px;
     background-color: red;
 `
+export const IconsContainer = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+`
 
+export const FloatingIcon = styled.img`
+    position: absolute;
+    width: 90px; /* Adjust size as needed */
+    height: 90px;
+    opacity: 0.8;
+    animation: float 4s ease-in-out infinite;
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+`
 export {
   HomeContainer,
   CenterContainer,
