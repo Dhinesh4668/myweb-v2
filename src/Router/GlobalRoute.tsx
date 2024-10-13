@@ -13,14 +13,15 @@ const GlobalRoute = () => {
           <img src={LoadingAnimation} alt="Loading..." style={styles.loader} />
         </div>
       }>
-        {/* header */}
-        <Header />
+        {/* Header with sticky behavior */}
+        <header style={styles.stickyHeader}>
+          <Header />
+        </header>
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
-
         {/* fotter */}
-        {/*<Footer />*/}
+        {/* <Footer /> */}
       </Suspense>
     </BrowserRouter>
   )
@@ -31,12 +32,18 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh', // Full screen height to vertically center
-    width: '100vw',  // Full screen width to horizontally center
+    height: '100vh',
+    width: '100vw',
   },
   loader: {
-    width: '100px',  // Adjust size as needed
+    width: '100px',
     height: '100px',
+  },
+  stickyHeader: {
+    position: 'sticky',
+    top: 0,
+    zIndex: 1000,
+   
   },
 }
 

@@ -1,21 +1,22 @@
 {
-    "colors": {
-        "primary": {
-            "background": "#0D0D0D",
-            "highlight": "#D2FE68"
-        },
-        "secondary": {
-            "background": "#F6F6F6",
-            "text": "#0D0D0D"
-        },
-        "text": {
-            "primary": "#F6F6F6",
-            "secondary": "#0D0D0D",
-            "muted": "#A1A1A1"
-        },
-        "border": {
-            "light": "#D2FE68",
-            "dark": "#A1A1A1"
-        }
+  "colors": {
+    "primary": {
+      "background": "#0D0D0D",
+      "highlight": "#D2FE68",
+      "aboutBg": "rgba(246, 245, 241, 0.05)"
+    },
+    "secondary": {
+      "background": "#F6F6F6",
+      "text": "#0D0D0D"
+    },
+    "text": {
+      "primary": "#F6F6F6",
+      "secondary": "#0D0D0D",
+      "muted": "#A1A1A1"
+    },
+    "border": {
+      "light": "#D2FE68",
+      "dark": "#A1A1A1"
     }
+  }
 }
